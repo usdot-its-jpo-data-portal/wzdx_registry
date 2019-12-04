@@ -63,7 +63,7 @@ class SocrataDataset(object):
             if k in float_fields and k in col_dtype_dict:
                 out[k] = float(v)
             elif k in col_dtype_dict:
-                if v is not None and v is not '':
+                if v not in [None, '']:
                     out[k] = dtype_func.get(col_dtype_dict.get(k, 'nonexistentKey'), identity)(v)
         out = {k:v for k,v in out.items() if k in col_dtype_dict}
         return out
