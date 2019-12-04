@@ -59,7 +59,7 @@ class WZDxFeedRegistry(SocrataDataset):
             self.trigger_lambda_ingestion(feed)
         else:
             next_ingest_time = self.get_next_ingest_time(update_freq, last_ingest_time)
-            if datetime.now() < next_ingest_time:
+            if datetime.now() > next_ingest_time:
                 self.trigger_lambda_ingestion(feed)
             else:
                 self.print_func('Skip {}'.format(feed['feedname']))
