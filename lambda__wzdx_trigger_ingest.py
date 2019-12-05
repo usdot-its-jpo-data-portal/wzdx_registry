@@ -1,7 +1,7 @@
-'''
+"""
 Lambda function that triggers a separate ingestion lambda function based on the WZDx Feed Registry Socrata dataset.
 
-'''
+"""
 from __future__ import print_function
 
 import json
@@ -23,7 +23,10 @@ SOCRATA_PARAMS = json.loads(SOCRATA_PARAMS)
 
 
 def lambda_handler(event=None, context=None):
-    """AWS Lambda handler. """
+    """
+    AWS Lambda handler.
+
+    """
     wzdx_registry = WZDxFeedRegistry(DATASET_ID,
                                     socrata_params=SOCRATA_PARAMS,
                                     lambda_to_trigger=LAMBDA_TO_TRIGGER,
