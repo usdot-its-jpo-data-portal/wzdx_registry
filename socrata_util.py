@@ -13,6 +13,10 @@ import time
 
 
 class SocrataDataset(object):
+    '''
+    Helper class for interacting with datasets in Socrata.
+
+    '''
     def __init__(self, dataset_id, socrata_client=None, socrata_params={}, float_fields=[], logger=None):
         self.dataset_id = dataset_id
         self.client = socrata_client
@@ -69,6 +73,10 @@ class SocrataDataset(object):
         return out
 
     def create_new_draft(self):
+        '''
+        Create a new dataset draft from existing draft.
+
+        '''
         draftDataset = requests.post('https://{}/api/views/{}/publication.json'.format(self.client.domain, self.dataset_id),
                                   auth=(self.socrata_params['username'], self.socrata_params['password']),
                                   params={'method': 'copySchema'})
