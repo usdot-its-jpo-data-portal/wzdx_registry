@@ -16,9 +16,12 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)  # necessary to make sure aws is logging
 
 
-DATASET_ID = os.environ['DATASET_ID']
-LAMBDA_TO_TRIGGER = os.environ['LAMBDA_TO_TRIGGER']
-SOCRATA_PARAMS = json.loads(os.environ['SOCRATA_PARAMS'])
+DATASET_ID = os.environ.get('DATASET_ID')
+LAMBDA_TO_TRIGGER = os.environ.get('LAMBDA_TO_TRIGGER')
+SOCRATA_PARAMS = os.environ.get('SOCRATA_PARAMS')
+
+if None in [DATASET_ID, LAMBDA_TO_TRIGGER, SOCRATA_PARAMS]:
+    exit()
 
 
 def lambda_handler(event=None, context=None):
@@ -27,7 +30,7 @@ def lambda_handler(event=None, context=None):
 
     """
     wzdx_registry = WZDxFeedRegistry(DATASET_ID,
-                                    socrata_params=SOCRATA_PARAMS,
+                                    socrata_params=json.loads(SOCRATA_PARAMS),
                                     lambda_to_trigger=LAMBDA_TO_TRIGGER,
                                     logger=logger)
     wzdx_registry.ingest()
