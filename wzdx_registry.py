@@ -37,7 +37,7 @@ class WZDxFeedRegistry(SocrataDataset):
             logger: Optional parameter. Could pass in a logger object or not pass
                 in anything. If a logger object is passed in, information will be
                 logged instead of printed. If not, information will be printed.
-            lambda_to_trigger: Name of the feed ingestion lambda function you'd
+            lambda_to_trigger: Name of the feed ingestion lambda function you'd like
                 to invoke.
             aws_profile: Optional string name of your AWS profile, as set up in
                 the credential file at ~/.aws/credentials. No need to pass in
