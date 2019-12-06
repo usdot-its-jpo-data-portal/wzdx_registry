@@ -21,6 +21,7 @@ LAMBDA_TO_TRIGGER = os.environ.get('LAMBDA_TO_TRIGGER')
 SOCRATA_PARAMS = os.environ.get('SOCRATA_PARAMS')
 
 if None in [DATASET_ID, LAMBDA_TO_TRIGGER, SOCRATA_PARAMS]:
+    logger.error('Required ENV variable(s) not found. Please make sure you have specified the following ENV variables: DATASET_ID, LAMBDA_TO_TRIGGER, SOCRATA_PARAMS')
     exit()
 
 
