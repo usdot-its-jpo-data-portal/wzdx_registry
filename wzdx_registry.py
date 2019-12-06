@@ -49,6 +49,8 @@ class WZDxFeedRegistry(SocrataDataset):
         self.lambda_to_trigger=lambda_to_trigger
         self.aws = AWS_helper(aws_profile)
 
+        self.n_ingest_triggered = 0
+
     def get_active_feeds(self):
         """
         Method for getting all active feeds from the feed registry.
@@ -114,6 +116,7 @@ class WZDxFeedRegistry(SocrataDataset):
         feed['lastingestedtosandbox'] = datetime.now().isoformat()
         response = self.client.upsert(self.dataset_id, [feed])
         self.print_func(response)
+        self.n_ingest_triggered += 1
 
     def check_feed(self, feed):
         """
@@ -143,5 +146,8 @@ class WZDxFeedRegistry(SocrataDataset):
 
         """
         feeds = self.get_active_feeds()
+        self.print_func('{} active feeds found in Socrata Feed Registry at http://{}/d/{}.'.format(len(feeds), self.socrata_params['domain'], self.dataset_id))
+
         for feed in feeds:
             self.check_feed(feed)
+        self.print_func('{} ingestion triggered.'.format(self.n_ingest_triggered))

@@ -16,7 +16,7 @@ If you plan to deploy the script on AWS Lambda, you need access to an AWS accoun
 
 If you plan to deploy the script on your local machine, you need the following:
 
-1. Have access to Python 2.7 or Python 3.6+. You can check your python version by entering `python --version` and `python3 --version` in command line.
+1. Have access to Python 3.6+. You can check your python version by entering `python --version` and `python3 --version` in command line.
 2. Have access to the command line of a machine. If you're using a Mac, the command line can be accessed via the [Terminal](https://support.apple.com/guide/terminal/welcome/mac), which comes with Mac OS. If you're using a PC, the command line can be accessed via the Command Prompt, which comes with Windows, or via [Cygwin64](https://www.cygwin.com/), a suite of open source tools that allow you to run something similar to Linux on Windows.
 3. Have your own Free Amazon Web Services account.
 	- Create one at http://aws.amazon.com
@@ -35,14 +35,6 @@ If you plan to deploy the script on your local machine, you need the following:
 2. Navigate into the repository folder by entering `cd wzdx_registry` in command line.
 3. Install the required packages by running `pip install -r requirements.txt`.
 
-- `TODO: Add demo example`
-
-## Running the tests
-
-- `TODO: Add section on how to run the automated tests for this system`
-- `TODO: Add section explaining what the end-to-end tests test and why`
-- `TODO: Add section on coding style tests, what they do, and why`
-
 ## Deployment
 
 ### Deployment on AWS Lambda
@@ -50,7 +42,7 @@ If you plan to deploy the script on your local machine, you need the following:
 1. To prepare the code package for deployment to AWS Lambda, run `sh package.sh` to build the package. This will create the file `wzdx_trigger_ingest.zip` in the repo's root folder.
 2. Create a lambda function in your AWS account "from scratch" with the following setting:
 	- Runtime: Python 3.8
-	- Permissions: Use an existing role (choose existing role with lambda permission and list/read/write permission to your destination s3 bucket)
+	- Permissions: Use an existing role (choose existing role with full lambda access (e.g. policy AWSLambdaFullAccess) and list/read/write permission to your destination s3 bucket)
 3. In the configuration view of your lambda function, set the following:
   - In "Designer" section, add a CloudWatch Events trigger
 	  - Set CloudWatch to trigger at your desired ingestion frequency. Once every 15 minutes is the highest frequency you should set for work zone status ingestion.

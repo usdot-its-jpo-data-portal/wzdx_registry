@@ -32,8 +32,6 @@ def lambda_handler(event=None, context=None):
                                     logger=logger)
     wzdx_registry.ingest()
 
-    logger.info('Processed events')
-
 
 if __name__ == '__main__':
     lambda_handler()
