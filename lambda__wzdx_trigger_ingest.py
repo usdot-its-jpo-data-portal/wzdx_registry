@@ -18,8 +18,7 @@ logger.setLevel(logging.INFO)  # necessary to make sure aws is logging
 
 DATASET_ID = os.environ['DATASET_ID']
 LAMBDA_TO_TRIGGER = os.environ['LAMBDA_TO_TRIGGER']
-SOCRATA_PARAMS = os.environ['SOCRATA_PARAMS']
-SOCRATA_PARAMS = json.loads(SOCRATA_PARAMS)
+SOCRATA_PARAMS = json.loads(os.environ['SOCRATA_PARAMS'])
 
 
 def lambda_handler(event=None, context=None):
