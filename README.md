@@ -44,29 +44,30 @@ If you plan to deploy the script on your local machine, you need the following:
 	- Runtime: Python 3.8
 	- Permissions: Use an existing role (choose existing role with full lambda access (e.g. policy AWSLambdaFullAccess) and list/read/write permission to your destination s3 bucket)
 3. In the configuration view of your lambda function, set the following:
-  - In "Designer" section, add a CloudWatch Events trigger
-	  - Set CloudWatch to trigger at your desired ingestion frequency. Once every 15 minutes is the highest frequency you should set for work zone status ingestion.
-	- In "Function code" section, select "Upload a .zip file" and upload the `wzdx_trigger_ingest.zip` file as your "Function Package."
-	- In "Environment variables" section, set the following:
-	  - `DATASET_ID`: ID of the WZDx feed registry Socrata dataset.
-			- default set as `69qe-yiui`
-		- `LAMBDA_TO_TRIGGER`: Name of the lambda function to trigger.
-			- default set as `wzdx_ingest_to_archive`. The code for the `wzdx_ingest_to_archive` can be found at https://github.com/usdot-its-jpo-data-portal/wzdx_sandbox.
-		- `SOCRATA_PARAMS`: stringified json object containing Socrata credentials for a user that has write access to the WZDx feed registry. At a minimum, this should include `username`, `password`, `app_token`, and `domain`.
-	- In "Basics settings" section, set adequate Memory and Timeout values. Memory of 1664 MB and Timeout value of 10 minutes should be plenty.
+ - In "Designer" section, add a CloudWatch Events trigger
+    - Set CloudWatch to trigger at your desired ingestion frequency. Once every 15 minutes is the highest frequency you should set for work zone status ingestion.
+ - In "Function code" section, select "Upload a .zip file" and upload the `wzdx_trigger_ingest.zip` file as your "Function Package."
+ - In "Environment variables" section, set the following:
+    - `DATASET_ID`: ID of the WZDx feed registry Socrata dataset.
+      - default set as `69qe-yiui`
+
+    - `LAMBDA_TO_TRIGGER`: Name of the lambda function to trigger.
+      - default set as `wzdx_ingest_to_archive`. The code for the `wzdx_ingest_to_archive` can be found at https://github.com/usdot-its-jpo-data-portal/wzdx_sandbox.
+    - `SOCRATA_PARAMS`: stringified json object containing Socrata credentials for a user that has write access to the WZDx feed registry. At a minimum, this should include `username`, `password`, `app_token`, and `domain`.
+  - In "Basics settings" section, set adequate Memory and Timeout values. Memory of 1664 MB and Timeout value of 10 minutes should be plenty.
 4. Make sure to save all of your changes.
 
 
 ## Built With
 
-* [Python 2.7 or 3.x](https://www.python.org/download/releases/2.7/, https://www.python.org/download/releases/3.0) : Python
-* [requests](https://pypi.org/project/requests/) : package managing HTTP requests
+* [Python 3.6+](https://www.python.org/download/releases/3.0): Python
+* [requests](https://pypi.org/project/requests/): package managing HTTP requests
 * [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html?id=docs_gateway): AWS API
 * [sodapy](https://github.com/xmunoz/sodapy): Python client for the Socrata Open Data API
 
 ## Contributing
 
-1. Fork it (https://github.com/usdot-its-jpo-data-portal/wzdx_registry/fork)
+1. [Fork it](https://github.com/usdot-its-jpo-data-portal/wzdx_registry/fork)
 2. Create your feature branch (git checkout -b feature/fooBar)
 3. Commit your changes (git commit -am 'Add some fooBar')
 4. Push to the branch (git push origin feature/fooBar)
