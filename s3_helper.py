@@ -50,9 +50,9 @@ class aws_helper(object):
         except botocore.exceptions.ProfileNotFound:
             self.print_func('Please supply a valid AWS profile name.')
             exit()
-        except Exception as e:
+        except:
             self.print_func(traceback.format_exc())
-            self.print_func('Exiting. Unable to establish AWS session with the following profile name: {}'.format(self.aws_profile)) +str(e)
+            self.print_func('Exiting. Unable to establish AWS session with the following profile name: {}'.format(self.aws_profile))
             exit()
         return session
 
