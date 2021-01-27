@@ -10,7 +10,7 @@ import requests
 import re
 
 from socrata_util import SocrataDataset
-from s3_helper import AWS_helper
+from s3_helper import aws_helper
 
 
 class WZDxFeedRegistry(SocrataDataset):
@@ -47,7 +47,7 @@ class WZDxFeedRegistry(SocrataDataset):
         """
         super(WZDxFeedRegistry, self).__init__(dataset_id, **kwargs)
         self.lambda_to_trigger=lambda_to_trigger
-        self.aws = AWS_helper(aws_profile)
+        self.aws = aws_helper(aws_profile)
 
         self.n_ingest_triggered = 0
 
