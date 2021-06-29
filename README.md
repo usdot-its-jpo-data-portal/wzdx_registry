@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 #### Prerequisites for AWS Lambda Deployment
 
-If you plan to deploy the script on AWS Lambda, you need access to an AWS account and be able to assign role(s) to a lambda function. There needs to be a role that is able to execute and invoke lambda functions and perform list/read/write actions to relevant buckets in S3.
+If you plan to deploy the script on AWS Lambda, you need access to an AWS account and be able to assign role(s) to a lambda function. There needs to be a role that is able to invoke lambda functions and perform list/read/write actions to relevant buckets in S3.
 
 #### Prerequisites for Local Deployment
 
